@@ -4,7 +4,7 @@
   "description": "an ueditor component for react",
   "main": "lib",
   "scripts": {
-    "build": "rm -rf lib/ && babel src -d lib && cp -r vendor/* lib/vendor",
+    "build": "rm -rf lib/ && babel src -d lib",
     "lint": "eslint src/**/*.js example/**/*.js --fix",
     "start": "webpack-dev-server --config example/webpack.config.js --open"
   },
