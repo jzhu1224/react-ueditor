@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactUeditor from '../src'
+import ReactUeditor from '../lib'
 
 class SimpleExample extends React.Component {
   updateEditorContent = content => {
@@ -10,7 +10,7 @@ class SimpleExample extends React.Component {
     return (
       <ReactUeditor
         debug
-        ueditorPath='../vendor/ueditor'
+        // ueditorPath='../vendor/ueditor'
         onChange={this.updateEditorContent}
       />
     )

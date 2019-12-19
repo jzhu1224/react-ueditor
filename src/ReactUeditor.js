@@ -55,7 +55,7 @@ class ReactUeditor extends React.Component {
 
   static propTypes = {
     value: PropTypes.string,
-    ueditorPath: PropTypes.string.isRequired,
+    ueditorPath: PropTypes.string,
     plugins: PropTypes.array,
     onChange: PropTypes.func,
     uploadImage: PropTypes.func,
@@ -78,6 +78,9 @@ class ReactUeditor extends React.Component {
 
   componentDidMount() {
     let {ueditorPath} = this.props
+    if (!ueditorPath) {
+      ueditorPath = 'vendor/ueditor'
+    }
     if (!window.UE && !window.UE_LOADING_PROMISE) {
       window.UE_LOADING_PROMISE = this.createScript(ueditorPath + '/ueditor.config.js').then(() => {
         return this.props.debug

@@ -145,7 +145,7 @@ UE.plugins['paste'] = function () {
             }
 
             //ie下使用innerHTML会产生多余的\r\n字符，也会产生&nbsp;这里过滤掉
-            html = div.innerHTML;//.replace(/>(?:(\s|&nbsp;)*?)</g,'><');
+            html = div.innerHTML.replace(/(http)?s?:?(\/\/[^"']*\.(?:png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG|svg|SVG))/g, "https://res.cloudinary.com/shenmanz/image/fetch/q_auto/$&");
 
             //过滤word粘贴过来的冗余属性
             html = UE.filterWord(html);
