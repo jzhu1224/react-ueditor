@@ -79,7 +79,7 @@ class ReactUeditor extends React.Component {
   componentDidMount() {
     let {ueditorPath} = this.props
     if (!ueditorPath) {
-      ueditorPath = '../vendor/ueditor'
+      ueditorPath = 'vendor/ueditor'
     }
     if (!window.UE && !window.UE_LOADING_PROMISE) {
       window.UE_LOADING_PROMISE = this.createScript(ueditorPath + '/ueditor.config.js').then(() => {
@@ -131,7 +131,7 @@ class ReactUeditor extends React.Component {
       }
 
       let node = document.createElement('script')
-      node.type = 'text/javascript'
+      node.async = true
       node.src = url
       node.onload = resolve
       document.body.appendChild(node)
