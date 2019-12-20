@@ -131,8 +131,8 @@ class ReactUeditor extends React.Component {
       }
 
       let node = document.createElement('script')
+      node.type = 'text/javascript'
       node.src = url
-      node.type = 'text/babel'
       node.onload = resolve
       document.body.appendChild(node)
     })
