@@ -364,8 +364,6 @@ class ReactUeditor extends React.Component {
         this.handlePasteImage()
       })
 
-      console.log('defaultValue', defaultValue)
-
       if (defaultValue) {
         this.ueditor.setContent(defaultValue)
         return
