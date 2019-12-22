@@ -36,7 +36,7 @@ const uploadAudioIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgC
 class ReactUeditor extends React.Component {
   constructor(props) {
     super(props)
-    this.content = props.value || '' // 存储编辑器的实时数据，用于传递给父组件
+    this.content = props.value || props.defaultValue || '' // 存储编辑器的实时数据，用于传递给父组件
     this.ueditor = null
     this.isContentChangedByWillReceiveProps = false
     this.tempfileInput = null
@@ -54,6 +54,7 @@ class ReactUeditor extends React.Component {
   }
 
   static propTypes = {
+    defaultValue: PropTypes.string,
     value: PropTypes.string,
     ueditorPath: PropTypes.string,
     plugins: PropTypes.array,
@@ -317,7 +318,7 @@ class ReactUeditor extends React.Component {
   }
 
   initEditor = () => {
-    const {config, plugins, onChange, value, getRef, onReady} = this.props
+    const {config, plugins, onChange, value, getRef, onReady, defaultValue} = this.props
 
     if (plugins && Array.isArray(plugins)) {
       plugins.forEach(plugin => {
@@ -362,6 +363,13 @@ class ReactUeditor extends React.Component {
       this.ueditor.addListener('afterpaste', () => {
         this.handlePasteImage()
       })
+
+      console.log('defaultValue', defaultValue)
+
+      if (defaultValue) {
+        this.ueditor.setContent(defaultValue)
+        return
+      }
 
       if (this.isContentChangedByWillReceiveProps) {
         this.isContentChangedByWillReceiveProps = false
